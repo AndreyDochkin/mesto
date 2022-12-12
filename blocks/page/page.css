@@ -9,7 +9,7 @@
 }
 
 @media (max-width:320px) {
-    .header {
+    .page {
         padding-top: 28px;
         padding-bottom: 36px;
     }

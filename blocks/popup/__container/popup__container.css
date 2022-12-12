@@ -6,7 +6,7 @@
     border-radius: 10px;
 
     padding-top: 34px;
-   
+    margin-top: 195px;
 
     display: flex;
     flex-direction: column;
@@ -17,8 +17,9 @@
 }
 
 @media (max-width:880px) {
-    .popup__container{
+    .popup__container {
         padding-top: 26px;
+        margin-top: 123px;
         width: 282px;
         height: 322px;
     }
