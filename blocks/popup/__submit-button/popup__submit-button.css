@@ -17,9 +17,17 @@
 
     cursor: pointer;
     transition: 0.7s;
-    
+
 }
 
 .popup__submit-button:hover {
     opacity: 0.8;
+}
+
+@media (max-width:880px) {
+    .popup__submit-button {
+        height: 46px;
+        font-size: 14px;
+        line-height: 17px;
+    }
 }
