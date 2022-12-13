@@ -1,4 +1,6 @@
 .profile__title {
+    max-width: 294px;
+    width: 100%;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -6,13 +8,16 @@
     line-height: 48px;
     color: #FFFFFF;
     margin: 0;
+    word-wrap: break-word;
 }
 
 
 @media (max-width:880px) {
     .profile__title {
+        max-width: 189px;
         font-size: 27px;
         line-height: 33px;
         text-align: center;
+
     }
 }
