@@ -6,7 +6,7 @@
     border: none;
     border-bottom: 1px solid rgb(0, 0, 0, .2);
 
-    font-family: 'Inter';
+    font-family: "Inter", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -25,53 +25,3 @@
     }
 }
 
-/* input::placeholder {
-    border: none;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-}
-
-input::-webkit-input-placeholder {
-    border: none;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-}
-
-input::-webkit-input-placeholder {
-    border: none;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-}
-
-input::-moz-placeholder {
-    border: none;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-}
-
-input::-ms-input-placeholder {
-    border: none;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-}
- */
