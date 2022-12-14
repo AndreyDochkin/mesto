@@ -7,4 +7,4 @@
 * Grid-разметка
 * JavaScript открытие закрытие попапа и редактирование полей профайла
 
-[сслыка страинцв размещенной на GitHub Pages](https://andreydochkin.github.io/mesto/)
+[сслыка на GitHub Pages](https://andreydochkin.github.io/mesto/)
