@@ -8,7 +8,9 @@
     line-height: 22px;
     color: #FFFFFF;
     margin: 6px 0 0 0;
-    word-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media (max-width:880px) {
