@@ -11,6 +11,12 @@
     border: none;
     padding: 0;
     margin: 0;
+    transition: 0.7s;
+    cursor: pointer;
+}
+
+.popup__close-button:hover {
+    opacity: 0.6;
 }
 
 @media (max-width:880px) {
