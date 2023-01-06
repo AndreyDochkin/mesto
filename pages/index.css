@@ -30,3 +30,5 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/user-popup/user-popup.css);
+@import url(../blocks/card-popup/card-popup.css);
