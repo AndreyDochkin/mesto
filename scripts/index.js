@@ -1,11 +1,8 @@
 const page = document.querySelector(".page");
-
 const popupUser = page.querySelector(".user-popup");
 const popupAddCard = page.querySelector(".card-popup");
-
 const editButton = page.querySelector(".profile__edit-button");
 const addCardButton = page.querySelector(".profile__add-button");
-
 const closeUserButton = popupUser.querySelector(".popup__close-button");
 const closeAddCardButton = popupAddCard.querySelector(".popup__close-button");
 
@@ -82,31 +79,29 @@ const initialCards = [
   },
 ];
 
-const cardTemplate = document.querySelector("#template_card");
-const gallery = document.querySelector(".gallery");
+const cardTemplate = page.querySelector("#template_card");
 
-function renderInitialCards() {
-  initialCards.forEach((card) => {
-    const cardElement = cardTemplate.content.cloneNode(true);
-    cardElement.querySelector(".gallery__title").textContent = card.name;
-    cardElement.querySelector(".gallery__img").alt = card.name;
-    cardElement.querySelector(".gallery__img").src = card.link;
-    gallery.appendChild(cardElement);
-  });
+function createCardElement(name, link) {
+  const cardElement = cardTemplate.content.cloneNode(true);
+  cardElement.querySelector(".gallery__title").textContent = name;
+  cardElement.querySelector(".gallery__img").alt = name;
+  cardElement.querySelector(".gallery__img").src = link;
+  page.querySelector(".gallery").prepend(cardElement);
 }
-
-renderInitialCards();
 
 const cardFormElement = popupAddCard.querySelector(".popup__form");
 
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
-  const cardElement = cardTemplate.content.cloneNode(true);
-  cardElement.querySelector(".gallery__title").textContent = cardFormElement.querySelector(".popup__input_type_name").value;
-  cardElement.querySelector(".gallery__img").alt = cardFormElement.querySelector(".popup__input_type_name").value;
-  cardElement.querySelector(".gallery__img").src = cardFormElement.querySelector(".popup__input_type_about").value;
-  gallery.appendChild(cardElement);
+  const name = cardFormElement.querySelector(".popup__input_type_name").value;
+  const link = cardFormElement.querySelector(".popup__input_type_about").value;
+  createCardElement(name, link);
   closeAddCardPopup(evt);
 }
 
+function renderInitialCards() {
+  initialCards.forEach((card) => createCardElement(card.name, card.link));
+}
+
+renderInitialCards();
 cardFormElement.addEventListener("submit", handleAddCardFormSubmit);
