@@ -81,12 +81,20 @@ const initialCards = [
 
 const cardTemplate = page.querySelector("#template_card");
 
+function deleteCard(event) {
+  event.target.closest(".gallery__item").remove();
+}
+
 function createCardElement(name, link) {
   const cardElement = cardTemplate.content.cloneNode(true);
   cardElement.querySelector(".gallery__title").textContent = name;
   cardElement.querySelector(".gallery__img").alt = name;
   cardElement.querySelector(".gallery__img").src = link;
-  page.querySelector(".gallery").prepend(cardElement);
+
+  deleteButton = cardElement.querySelector(".gallery__delete");
+  deleteButton.addEventListener("click", deleteCard);
+
+  return cardElement;
 }
 
 const cardFormElement = popupAddCard.querySelector(".popup__form");
@@ -95,12 +103,17 @@ function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardFormElement.querySelector(".popup__input_type_name").value;
   const link = cardFormElement.querySelector(".popup__input_type_about").value;
-  createCardElement(name, link);
+
+  const card = createCardElement(name, link);
+  page.querySelector(".gallery").prepend(card);
   closeAddCardPopup(evt);
 }
 
 function renderInitialCards() {
-  initialCards.forEach((card) => createCardElement(card.name, card.link));
+  initialCards.forEach((item) => {
+    const card = createCardElement(item.name, item.link);
+    page.querySelector(".gallery").prepend(card);
+  });
 }
 
 renderInitialCards();
