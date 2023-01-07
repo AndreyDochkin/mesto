@@ -85,6 +85,15 @@ function deleteCard(event) {
   event.target.closest(".gallery__item").remove();
 }
 
+function likeCard(event) {
+  const like = event.target.closest(".gallery__like");
+  if (like.classList.contains("gallery__like_active")) {
+    like.classList.remove("gallery__like_active");
+  } else {
+    like.classList.add("gallery__like_active");
+  }
+}
+
 function createCardElement(name, link) {
   const cardElement = cardTemplate.content.cloneNode(true);
   cardElement.querySelector(".gallery__title").textContent = name;
@@ -93,6 +102,9 @@ function createCardElement(name, link) {
 
   deleteButton = cardElement.querySelector(".gallery__delete");
   deleteButton.addEventListener("click", deleteCard);
+
+  likeButton = cardElement.querySelector(".gallery__like");
+  likeButton.addEventListener("click", likeCard);
 
   return cardElement;
 }
