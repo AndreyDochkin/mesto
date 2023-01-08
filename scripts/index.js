@@ -4,6 +4,8 @@ const popupProfile = page.querySelector(".user-popup");
 const popupAddCard = page.querySelector(".card-popup");
 const popupImage = page.querySelector(".img-popup");
 
+const galleryContainer = page.querySelector(".gallery");
+
 const editButton = page.querySelector(".profile__edit-button");
 const addCardButton = page.querySelector(".profile__add-button");
 const closeButtons = document.querySelectorAll(".popup__close-button");
@@ -136,7 +138,7 @@ function handleAddCardFormSubmit(evt) {
   const name = cardNameInput.value;
   const link = cardLinkInput.value;
   const card = createCardElement(name, link);
-  page.querySelector(".gallery").prepend(card);
+  galleryContainer.prepend(card);
   closePopup(popupAddCard);
 }
 cardFormElement.addEventListener("submit", handleAddCardFormSubmit);
@@ -144,7 +146,7 @@ cardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 function renderInitialCards() {
   initialCards.forEach((item) => {
     const card = createCardElement(item.name, item.link);
-    page.querySelector(".gallery").prepend(card);
+    galleryContainer.prepend(card);
   });
 }
 
