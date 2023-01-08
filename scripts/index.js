@@ -1,10 +1,12 @@
 const page = document.querySelector(".page");
 const popupUser = page.querySelector(".user-popup");
 const popupAddCard = page.querySelector(".card-popup");
+const popupImage = page.querySelector(".img-popup");
 const editButton = page.querySelector(".profile__edit-button");
 const addCardButton = page.querySelector(".profile__add-button");
 const closeUserButton = popupUser.querySelector(".popup__close-button");
 const closeAddCardButton = popupAddCard.querySelector(".popup__close-button");
+const closeImagePopupButton = popupImage.querySelector(".popup__close-button");
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -94,16 +96,26 @@ function likeCard(event) {
   }
 }
 
-function imagePopup(event) {
+function imagePopupClose(event) {
+  event.preventDefault();
+  closePopup(popupImage);
+  closeImagePopupButton.removeEventListener("click", imagePopupClose);
+}
+
+function imagePopupOpen(event) {
   event.preventDefault();
   const image = event.target.closest(".gallery__img");
   const url = image.getAttribute("src");
-  // if (image.classList.contains("gallery__image_active")) {
-  // } else {
 
-  // }
+  const galleryItem = event.target.closest(".gallery__item");
+  const about = galleryItem.querySelector(".gallery__title");
 
-  console.log(url);
+  popupImage.querySelector(".popup__image").src = url;
+  popupImage.querySelector(".popup__caption").textContent = about.textContent;
+
+  openPopup(popupImage);
+
+  closeImagePopupButton.addEventListener("click", imagePopupClose);
 }
 
 function createCardElement(name, link) {
@@ -119,7 +131,7 @@ function createCardElement(name, link) {
   likeButton.addEventListener("click", likeCard);
 
   imageClick = cardElement.querySelector(".gallery__img");
-  imageClick.addEventListener("click", imagePopup);
+  imageClick.addEventListener("click", imagePopupOpen);
 
   return cardElement;
 }
