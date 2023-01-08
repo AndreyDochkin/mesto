@@ -14,6 +14,9 @@ const profileForm = document.forms["profile-form"];
 const nameInput = profileForm.elements["name"];
 const jobInput = profileForm.elements["about"];
 
+const popupImageItem = popupImage.querySelector(".popup__image");
+const popupImageCaption = popupImage.querySelector(".popup__caption");
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
@@ -94,7 +97,7 @@ function likeCard(event) {
   like.classList.toggle("gallery__like_active");
 }
 
-function imagePopupOpen(event) {
+function OpenPopupImage(event) {
   event.preventDefault();
   const image = event.target.closest(".gallery__img");
   const url = image.getAttribute("src");
@@ -102,28 +105,33 @@ function imagePopupOpen(event) {
   const galleryItem = event.target.closest(".gallery__item");
   const about = galleryItem.querySelector(".gallery__title");
 
-  popupImage.querySelector(".popup__image").src = url;
-  popupImage.querySelector(".popup__caption").textContent = about.textContent;
+  popupImageItem.src = url;
+  popupImageItem.alt = about.textContent;
+  popupImageCaption.textContent = about.textContent;
 
   openPopup(popupImage);
 }
 
 function createCardElement(name, link) {
-  const cardElement = cardTemplate.content.cloneNode(true);
-  cardElement.querySelector(".gallery__title").textContent = name;
-  cardElement.querySelector(".gallery__img").alt = name;
-  cardElement.querySelector(".gallery__img").src = link;
+  const card = cardTemplate.content.cloneNode(true);
+  
+  const cardTitle = card.querySelector(".gallery__title");
+  const cardImage = card.querySelector(".gallery__img");
 
-  deleteButton = cardElement.querySelector(".gallery__delete");
+  cardTitle.textContent = name;
+  cardImage.alt = name;
+  cardImage.src = link;
+
+  const deleteButton = card.querySelector(".gallery__delete");
   deleteButton.addEventListener("click", deleteCard);
 
-  likeButton = cardElement.querySelector(".gallery__like");
+  const likeButton = card.querySelector(".gallery__like");
   likeButton.addEventListener("click", likeCard);
 
-  imageClick = cardElement.querySelector(".gallery__img");
-  imageClick.addEventListener("click", imagePopupOpen);
+  const imageClick = card.querySelector(".gallery__img");
+  imageClick.addEventListener("click", OpenPopupImage);
 
-  return cardElement;
+  return card;
 }
 
 const cardFormElement = document.forms["card-form"];
