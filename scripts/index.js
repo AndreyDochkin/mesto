@@ -97,17 +97,10 @@ function likeCard(event) {
   like.classList.toggle("gallery__like_active");
 }
 
-function OpenPopupImage(event) {
-  event.preventDefault();
-  const image = event.target.closest(".gallery__img");
-  const url = image.getAttribute("src");
-
-  const galleryItem = event.target.closest(".gallery__item");
-  const about = galleryItem.querySelector(".gallery__title");
-
-  popupImageItem.src = url;
-  popupImageItem.alt = about.textContent;
-  popupImageCaption.textContent = about.textContent;
+function handleCardClick(name, link) {
+  popupImageItem.src = link;
+  popupImageItem.alt = name;
+  popupImageCaption.textContent = name;
 
   openPopup(popupImage);
 }
@@ -128,8 +121,8 @@ function createCardElement(name, link) {
   const likeButton = card.querySelector(".gallery__like");
   likeButton.addEventListener("click", likeCard);
 
-  const imageClick = card.querySelector(".gallery__img");
-  imageClick.addEventListener("click", OpenPopupImage);
+  const cardClick = card.querySelector(".gallery__img");
+  cardClick.addEventListener("click", () => handleCardClick(name, link));
 
   return card;
 }
