@@ -94,6 +94,18 @@ function likeCard(event) {
   }
 }
 
+function imagePopup(event) {
+  event.preventDefault();
+  const image = event.target.closest(".gallery__img");
+  const url = image.getAttribute("src");
+  // if (image.classList.contains("gallery__image_active")) {
+  // } else {
+
+  // }
+
+  console.log(url);
+}
+
 function createCardElement(name, link) {
   const cardElement = cardTemplate.content.cloneNode(true);
   cardElement.querySelector(".gallery__title").textContent = name;
@@ -105,6 +117,9 @@ function createCardElement(name, link) {
 
   likeButton = cardElement.querySelector(".gallery__like");
   likeButton.addEventListener("click", likeCard);
+
+  imageClick = cardElement.querySelector(".gallery__img");
+  imageClick.addEventListener("click", imagePopup);
 
   return cardElement;
 }
